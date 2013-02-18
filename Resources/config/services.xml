@@ -22,6 +22,7 @@
         <parameter key="jms_serializer.camel_case_naming_strategy.class">JMS\Serializer\Naming\CamelCaseNamingStrategy</parameter>
         <parameter key="jms_serializer.serialized_name_annotation_strategy.class">JMS\Serializer\Naming\SerializedNameAnnotationStrategy</parameter>
         <parameter key="jms_serializer.cache_naming_strategy.class">JMS\Serializer\Naming\CacheNamingStrategy</parameter>
+        <parameter key="jms_serializer.identical_property_naming_strategy.class">JMS\Serializer\Naming\IdenticalPropertyNamingStrategy</parameter>
 
         <parameter key="jms_serializer.doctrine_object_constructor.class">JMS\Serializer\Construction\DoctrineObjectConstructor</parameter>
         <parameter key="jms_serializer.unserialize_object_constructor.class">JMS\Serializer\Construction\UnserializeObjectConstructor</parameter>
@@ -40,7 +41,7 @@
         <parameter key="jms_serializer.xml_deserialization_visitor.class">JMS\Serializer\XmlDeserializationVisitor</parameter>
         <parameter key="jms_serializer.xml_deserialization_visitor.doctype_whitelist" type="collection"></parameter>
         <parameter key="jms_serializer.yaml_serialization_visitor.class">JMS\Serializer\YamlSerializationVisitor</parameter>
-        
+
         <parameter key="jms_serializer.handler_registry.class">JMS\Serializer\Handler\LazyHandlerRegistry</parameter>
 
         <parameter key="jms_serializer.datetime_handler.class">JMS\Serializer\Handler\DateHandler</parameter>
@@ -59,7 +60,7 @@
         <service id="jms_serializer.doctrine_proxy_subscriber" class="%jms_serializer.doctrine_proxy_subscriber.class%">
             <tag name="jms_serializer.event_subscriber" />
         </service>
-        
+
         <!-- Handlers -->
         <service id="jms_serializer.handler_registry" class="%jms_serializer.handler_registry.class%">
             <argument type="service" id="service_container" />
@@ -80,7 +81,7 @@
         <service id="jms_serializer.constraint_violation_handler" class="%jms_serializer.constraint_violation_handler.class%">
             <tag name="jms_serializer.subscribing_handler" />
         </service>
-            
+
         <!-- Metadata Drivers -->
         <service id="jms_serializer.metadata.file_locator" class="%jms_serializer.metadata.file_locator.class%" public="false">
             <argument type="collection" /><!-- Namespace Prefixes mapping to Directories -->
@@ -142,6 +143,7 @@
         </service>
         <service id="jms_serializer.cache_naming_strategy" class="%jms_serializer.cache_naming_strategy.class%" public="false" />
         <service id="jms_serializer.naming_strategy" alias="jms_serializer.serialized_name_annotation_strategy" public="false" />
+        <service id="jms_serializer.identical_property_naming_strategy" class="%jms_serializer.identical_property_naming_strategy.class%" public="false" />
 
         <!-- Object Constructors -->
         <service id="jms_serializer.doctrine_object_constructor" class="%jms_serializer.doctrine_object_constructor.class%" public="false">
